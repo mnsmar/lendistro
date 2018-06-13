@@ -9,6 +9,7 @@ import (
 	"github.com/biogo/biogo/alphabet"
 	"github.com/biogo/biogo/io/seqio/fastq"
 	"github.com/biogo/biogo/seq/linear"
+	"github.com/brentp/xopen"
 	"github.com/mnsmar/lendistro"
 	"github.com/mnsmar/lendistro/cmd"
 )
@@ -46,7 +47,7 @@ func main() {
 		wg.Add(1)
 		go func(input string) {
 			// open input file.
-			f, err := os.Open(input)
+			f, err := xopen.Ropen(input)
 			if err != nil {
 				log.Fatal(err)
 			}
